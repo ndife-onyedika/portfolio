@@ -1,0 +1,9 @@
+.vscode/
+node_modules/
+
+assets/css/style/*
+assets/scss/*
+assets/css/index.css
+
+package-lock.json
+text
