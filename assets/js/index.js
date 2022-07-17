@@ -72,26 +72,6 @@ $('.slide').each(function () {
     }, {
         offset: '10px;'
     })
-
-    // var inview = new Waypoint.Inview({
-    //     element: $(this),
-    //     entered: function (direction) {
-    //         let self = this.element[0];
-    //         $(document).find('.nav_item>a').each(function () {
-    //             $(`[data-scroll="${self.id}"]`).each(function () {
-    //                 $(this).addClass('nav_item_hover')
-    //             });
-    //         })
-    //     },
-    //     exited: function (direction) {
-    //         let self = this.element[0];
-    //         $(document).find('.nav_item>a').each(function () {
-    //             $(`[data-scroll="${self.id}"]`).each(function () {
-    //                 $(this).removeClass('nav_item_hover')
-    //             });
-    //         })
-    //     },
-    // })
 })
 
 $('main').waypoint(function (direction) {
@@ -184,3 +164,29 @@ $(".slide-main-btn-up").on('click', function () {
         }
     }
 }());
+
+
+(function ($) {
+    /*
+     * We need to turn it into a function.
+     * To apply the changes both on document ready and when we resize the browser.
+     */
+
+    function mediaSize() {
+        /* Set the matchMedia */
+        if (window.matchMedia("(max-width: 800px)").matches) {
+            /* Changes when we reach the max-width  */
+            $(document).on('click', '.nav_item>a', function () {
+                $('.nav_checkbox').each(function () {
+                    $(this).prop('checked', false)
+                    $('.nav').removeClass("nav_checked")
+                })
+            })
+        }
+    }
+
+    /* Call the function */
+    mediaSize();
+    /* Attach the function to the resize event listener */
+    window.addEventListener("resize", mediaSize, false);
+})(jQuery);
