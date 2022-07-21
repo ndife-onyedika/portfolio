@@ -9,6 +9,7 @@ $(document).ready(function () {
             'data-link': $(this).children().attr('src')
         })
     })
+    $('#scroll_up').addClass('animated fadeOutRight')
 })
 
 $('.nav_checkbox').on('change', function () {
@@ -77,17 +78,17 @@ $('.slide').each(function () {
 $('main').waypoint(function (direction) {
     if (direction == "down") {
         $('#scroll_up').removeClass('fadeOutRight')
-        $('#scroll_up').addClass('scroll_up animated fadeInRight')
+        $('#scroll_up').addClass('fadeInRight')
     } else {
-        $('#scroll_up').removeClass('scroll_up fadeInRight')
-        $('#scroll_up').addClass('scroll_up fadeOutRight')
+        $('#scroll_up').removeClass('fadeInRight')
+        $('#scroll_up').addClass('fadeOutRight')
     }
 }, {
     offset: '10px;'
 });
 
 // SMOOTH SCROLLTOP BUTTON
-$('#scroll_up').on('click', function () {
+$(document).on('click', '.js-scroll_up', function () {
     scroll({
         top: $('html,body').offset().top,
         behavior: "smooth"
@@ -112,7 +113,7 @@ $(".slide-main-btn-up").on('click', function () {
 (function () {
     var ChaHeader = function (element) {
         this.element = element;
-        this.sections = document.getElementsByClassName('js-section');
+        this.sections = document.getElementsByClassName('js-section-nav');
         this.nav = this.element.getElementsByClassName('js-nav')[0];
         initChaHeader(this);
     };
@@ -157,10 +158,67 @@ $(".slide-main-btn-up").on('click', function () {
     };
 
     // init the ChaHeader Object
-    var chaHader = document.getElementsByClassName('js-nav-clip');
-    if (chaHader.length > 0) {
-        for (var i = 0; i < chaHader.length; i++) {
-            new ChaHeader(chaHader[i]);
+    var chaHeader = document.getElementsByClassName('js-nav-clip');
+    if (chaHeader.length > 0) {
+        for (var i = 0; i < chaHeader.length; i++) {
+            new ChaHeader(chaHeader[i]);
+        }
+    }
+}());
+
+
+(function () {
+    var ChaScroll = function (element) {
+        this.element = element;
+        this.sections = document.getElementsByClassName('js-section-scroll');
+        this.nav = this.element.getElementsByClassName('js-scroll_up')[0];
+        initChaScroll(this);
+    };
+
+    function initChaScroll(element) {
+        // set initial status
+        for (var j = 0; j < element.sections.length; j++) {
+            initSection(element, j);
+        }
+
+        // make sure scroll element is visible when in focus
+        element.nav.addEventListener('focusin', function (event) {
+            checkScrollVisible(element);
+        });
+    };
+
+    function initSection(element, index) {
+        // clone scroll element inside each section
+        var cloneItem = (index == 0) ? element.element : element.element.cloneNode(true);
+        Util.removeClass(cloneItem, 'js-scroll_up-clip');
+        var customClasses = element.sections[index].getAttribute('data-theme');
+        // hide clones to SR
+        cloneItem.setAttribute('aria-hidden', 'true');
+        if (customClasses) Util.addClass(cloneItem.getElementsByClassName('js-scroll_up')[0], customClasses);
+        // keyborad users - make sure cloned items are not tabbable
+        if (index != 0) {
+            // reset tab index
+            resetTabIndex(cloneItem);
+            element.sections[index].insertBefore(cloneItem, element.sections[index].firstChild);
+        }
+    }
+
+    function resetTabIndex(clone) {
+        var focusable = clone.querySelectorAll('[href], button, input');
+        for (var i = 0; i < focusable.length; i++) {
+            focusable[i].setAttribute('tabindex', '-1');
+        }
+    };
+
+    function checkScrollVisible(element) {
+        if (window.scrollY > element.sections[0].offsetHeight - element.nav.offsetHeight) window.scrollTo(0, 0);
+    };
+
+    // init the ChaHeader Object
+    var chaScroll = document.getElementsByClassName('js-scroll_up-clip');
+    if (chaScroll.length > 0) {
+        for (var i = 0; i < chaScroll.length; i++) {
+            new ChaScroll(chaScroll[i]);
         }
     }
 }());

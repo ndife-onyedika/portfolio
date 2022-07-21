@@ -38,7 +38,7 @@
     <body>
 
         <!-- HEADER -->
-        <header class="header js-section" id="particles-js">
+        <header class="header js-section-nav" id="particles-js">
             <!-- NAVIGATION -->
             <div class="nav-clip js-nav-clip">
                 <nav class="nav js-nav">
@@ -56,14 +56,20 @@
                                 </a>
                             </li>
                             <li class="nav_item">
-                                <a href="#gallery" data-scroll="gallery">
+                                <a href="#service" data-scroll="service">
                                     <span>02</span>
+                                    SERVICES
+                                </a>
+                            </li>
+                            <li class="nav_item">
+                                <a href="#gallery" data-scroll="gallery">
+                                    <span>03</span>
                                     GALLERY
                                 </a>
                             </li>
                             <li class="nav_item">
                                 <a href="#contact" data-scroll="contact">
-                                    <span>03</span>
+                                    <span>04</span>
                                     CONTACT
                                 </a>
                             </li>
@@ -117,15 +123,23 @@
         <!-- MAIN -->
         <main>
             <section class="about slide" id="about">
-                <div data-theme="light" class="js-section slide_main">
+                <div data-theme="light" class="js-section-nav js-section-scroll slide_main">
                     <h2>ABOUT</h2>
                     <span class="slide-main-btn-down">
                         <svg>
                             <use xlink:href="./assets/svg/sprite.svg#icon-plus"></use>
                         </svg>
                     </span>
+
+                    <div class="scroll_up-clip js-scroll_up-clip">
+                        <span id="scroll_up" class="scroll_up js-scroll_up">
+                            <svg>
+                                <use xlink:href="./assets/svg/sprite.svg#icon-up"></use>
+                            </svg>
+                        </span>
+                    </div>
                 </div>
-                <div class="js-section container">
+                <div class="js-section-nav js-section-scroll container">
                     <div class="pad" id="slide_main-details">
                         <span class="slide-main-btn-up">
                             <svg>
@@ -223,8 +237,72 @@
                 </div>
             </section>
 
+            <section class="service slide" id="service">
+                <div data-theme="light" class="js-section-nav js-section-scroll slide_main">
+                    <h2>SERVICES</h2>
+                    <span class="slide-main-btn-down">
+                        <svg>
+                            <use xlink:href="./assets/svg/sprite.svg#icon-plus"></use>
+                        </svg>
+                    </span>
+                </div>
+                <div class="js-section-nav js-section-scroll container">
+                    <div class="pad" id="slide_main-details">
+                        <span class="slide-main-btn-up">
+                            <svg>
+                                <use xlink:href="./assets/svg/sprite.svg#icon-minus"></use>
+                            </svg>
+                        </span>
+
+                        <div>
+                            <div>
+                                <svg>
+                                    <use xlink:href="./assets/svg/sprite.svg#icon-minus"></use>
+                                </svg>
+                                <h4>Brand Management</h4>
+                                <p>Creating and maintaining a strong brand can be quite challenging; from brand
+                                    identity, to brand voice, brand presence and everything in between. We’ll help you
+                                    create executable strategies that will not only consolidate on your current brand
+                                    identity but solidify your brand appeal to your customers.</p>
+                            </div>
+                            <div>
+                                <svg>
+                                    <use xlink:href="./assets/svg/sprite.svg#icon-minus"></use>
+                                </svg>
+                                <h4>Marketing Strategies</h4>
+                                <p>With vast experience and resources in the marketing and advertising sectors, we will
+                                    help you promote your products, services or projects to relevant audiences. Top of
+                                    Mind Awareness is our primary objective and with our KPI driven monitoring system,
+                                    we can track the progress and adjust where necessary, giving you value for your
+                                    resources. </p>
+                            </div>
+                            <div>
+                                <svg>
+                                    <use xlink:href="./assets/svg/sprite.svg#icon-minus"></use>
+                                </svg>
+                                <h4>Fund Raising/Project Management</h4>
+                                <p>Do you have a product, service or project that needs funding? Then we can help you
+                                    connect with HNI's and corporate bodies who can not only fund but partner with you
+                                    to see to the success of your project. We also help you execute projects on time and
+                                    on budget.</p>
+                            </div>
+                            <div>
+                                <svg>
+                                    <use xlink:href="./assets/svg/sprite.svg#icon-minus"></use>
+                                </svg>
+                                <h4>Media Entrepreneurship</h4>
+                                <p>We are constantly involved in major video and audio productions, whether they are for
+                                    radio or tv. Working with us, you will have access to an amazing production team
+                                    that can meet all your creative demands including writing/scripting, cinematography,
+                                    music production and mastering, jingle production, editing among others.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section class="gallery slide" id="gallery">
-                <div data-theme="light" class="js-section slide_main">
+                <div data-theme="light" class="js-section-nav js-section-scroll slide_main">
                     <h2>GALLERY</h2>
                     <span class="slide-main-btn-down">
                         <svg>
@@ -232,7 +310,7 @@
                         </svg>
                     </span>
                 </div>
-                <div class="js-section container">
+                <div class="js-section-nav js-section-scroll container">
                     <div class="pad" id="slide_main-details">
                         <span class="slide-main-btn-up">
                             <svg>
@@ -281,7 +359,7 @@
             </section>
 
             <section class="contact slide" id="contact">
-                <div data-theme="light" class="js-section slide_main">
+                <div data-theme="light" class="js-section-nav js-section-scroll slide_main">
                     <h2>CONTACT</h2>
                     <span class="slide-main-btn-down">
                         <svg>
@@ -289,7 +367,7 @@
                         </svg>
                     </span>
                 </div>
-                <div class="js-section container">
+                <div class="js-section-nav js-section-scroll container">
                     <div class="pad" id="slide_main-details">
                         <span class="slide-main-btn-up">
                             <svg>
@@ -357,7 +435,7 @@
                 </div>
             </section>
 
-            <section data-theme="dark" class="videos js-section container">
+            <section data-theme="dark" class="videos js-section-nav js-section-scroll container">
                 <div class="pad">
                     <figure>
                         <iframe src="https://drive.google.com/file/d/1Hh8Olx29_o-C_gg4qlKr094rt8plSDRN/preview"
@@ -420,7 +498,7 @@
         </main>
 
         <!-- FOOTER -->
-        <footer class="container js-section" data-theme="light">
+        <footer class="container js-section-nav js-section-scroll" data-theme="light">
             <div class="pad">
                 <div>
                     <figure><img class="lightboxed" src="./assets/img/jpg/logo.jpg" alt=""></figure>
@@ -446,13 +524,6 @@
                 </div>
             </div>
         </footer>
-
-        <!-- SCROLLTOP -->
-        <span id="scroll_up">
-            <svg>
-                <use xlink:href="./assets/svg/sprite.svg#icon-up"></use>
-            </svg>
-        </span>
 
         <script src="./assets/vendor/js/jquery-3.3.1.min.js"></script>
         <script src="./assets/vendor/js/jquery.waypoints.min.js"></script>
